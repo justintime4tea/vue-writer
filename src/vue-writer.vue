@@ -55,7 +55,7 @@ export default defineComponent({
         setTimeout(this.typewriter, this.typeSpeed);
       } else {
         
-        if (this.iterations > 0 && this.count >= this.loop) {
+        if (this.iterations > 0 && this.count >= this.iterations) {
           return;
         }
         
