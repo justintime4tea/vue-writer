@@ -31,12 +31,17 @@ export default defineComponent({
     caret: {
       type: String, 
       default: 'cursor' 
+    },
+    iterations: {
+      type: Number,
+      default: 0
     }
   },
   data() {
     return {
       typeValue: "",
       typeStatus: false,
+      count: 0,
       arrayIndex: 0,
       charIndex: 0,
     };
@@ -49,6 +54,15 @@ export default defineComponent({
         this.charIndex += 1;
         setTimeout(this.typewriter, this.typeSpeed);
       } else {
+        
+        if (this.iterations > 0 && this.count >= this.loop) {
+          return;
+        }
+        
+        if (this.iterations > 0) {
+          this.count += 1;
+        }
+        
         this.typeStatus = false;
         setTimeout(this.eraser, this.delay);
       }
